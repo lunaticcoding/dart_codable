@@ -16,7 +16,8 @@ abstract class Decodable {
   /// the Decodable Interface with the value provided.
   ///
   /// @param data Map of field name to initial value.
-  /// @throws FieldDoesNotExistException If the field specified by a map key does not exist.
+  /// @throws FieldDoesNotExistException If the field specified by a map
+  /// key does not exist.
   Decodable.decode(Map<String, dynamic> data) {
     InstanceMirror mirror = reflect(this);
     data.forEach((key, value) {
@@ -29,17 +30,20 @@ abstract class Decodable {
   }
 }
 
-/// A custom Exception to be thrown if you try to initialize a field that does not exist.
+/// A custom Exception to be thrown if you try to initialize a field
+/// that does not exist.
 class FieldDoesNotExistException implements Exception {
   /// Set the non-existent field.
   FieldDoesNotExistException(this.field);
+
   /// Field name of the non-existent field.
   final String field;
 
   /// String representation of the exception.
   @override
   String toString() {
-    return "FieldDoesNotExistException: Tried setting $field on class, which does not exist";
+    return "FieldDoesNotExistException: Tried setting $field on class, "
+        "which does not exist";
   }
 }
 
