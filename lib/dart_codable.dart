@@ -22,8 +22,16 @@ abstract class Decodable {
     InstanceMirror mirror = reflect(this);
     data.forEach((key, value) {
       try {
-        mirror.setField(Symbol(key), value);
-      } catch (e) {
+        VariableMirror field = mirror.type.declarations[Symbol(key)];
+        if (field.type.isSubtypeOf(mirror.type.superclass)) {
+          ClassMirror fieldType =
+              mirror.type.instanceMembers[Symbol(key)].returnType;
+          mirror.setField(Symbol(key),
+              fieldType.newInstance(Symbol("decode"), [value]).reflectee);
+        } else {
+          mirror.setField(Symbol(key), value);
+        }
+      } catch(_) {
         throw FieldDoesNotExistException(key);
       }
     });
@@ -62,7 +70,13 @@ abstract class Encodable {
     for (var v in mirror.type.declarations.values) {
       var name = MirrorSystem.getName(v.simpleName);
       if (v is VariableMirror && !v.isPrivate) {
-        encoded[name] = mirror.getField(Symbol(name)).reflectee;
+        if (v.type.isSubtypeOf(mirror.type.superclass)) {
+          encoded[name] = mirror
+              .getField(Symbol(name))
+              .invoke(Symbol("encode"), []).reflectee;
+        } else {
+          encoded[name] = mirror.getField(Symbol(name)).reflectee;
+        }
       }
     }
     return encoded;
