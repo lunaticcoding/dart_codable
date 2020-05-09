@@ -1,7 +1,6 @@
 name: dart_codable
 description: Implementing the Swift Codable Protocol. It provides the abstract classes Encodable, Decodable and Codable to extend a custom class with.
-version: 0.0.2
-author: Marco Papula
+version: 0.0.3
 homepage: https://github.com/lunaticcoding/dart_codable
 
 environment:
