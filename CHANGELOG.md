@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 10.05.2020
 
-* TODO: Describe initial release.
+* Basic Implementation of the Swift Codable Protocol.
