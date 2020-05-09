@@ -1,0 +1,15 @@
+name: dart_codable
+description: Implementing the Swift Codable Protocol.
+version: 0.0.1
+author: Marco Papula
+homepage: www.lunaticcoding.com
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  reflectable: ^2.2.4
+
+dev_dependencies:
+  test_coverage: ^0.4.1
+  test: any
