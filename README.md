@@ -2,13 +2,40 @@
 
 Implementing the Swift Codable Protocol.
 
-## Getting Started
+## Example
+First of all import the package alongside the dart:convert package.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+    import 'dart:convert';
+    import 'package:dart_codable/dart_codable.dart';
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+Have your Class extend the Codable Class. Note that you have to pass down the constructor from the superclass because dart does not automatically create non-default constructors.
+
+    class Person extends Codable{
+      Person.decode(Map<String, dynamic> data) : super.decode(data);
+
+      String name;
+      int age;
+      double score;
+    }
+
+Then simply use it:
+
+    String jsonString = "{ \"name\": \"Marco\", \"age\": 24, \"score\": 99.9 }";
+
+    Person me = Person.decode(json.decode(jsonString));
+
+    print("Name: ${me.name}");
+    print("Age: ${me.age}");
+    print("Score: ${me.score}");
+    print("");
+
+    print(json.encode(me.encode()));
+
+Which outputs 
+
+    Name: Marco
+    Age: 24
+    Score: 99.9
+
+    {"name":"Marco","age":24,"score":99.9}
