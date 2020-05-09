@@ -1,3 +1,7 @@
+## [0.1.0] - 10.05.2020
+
+* Release version 0.1.0.
+
 ## [0.0.3] - 10.05.2020
 
 * Reformat the code and extend example.
