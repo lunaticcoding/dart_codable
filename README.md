@@ -1,6 +1,6 @@
 # dart_codable
 
-Implementing the Swift Codable Protocol.
+Implementing the Swift Codable Protocol using mirrors.
 
 ## Example
 First of all import the package alongside the dart:convert package.
